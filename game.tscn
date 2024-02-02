@@ -1,12 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://d4i2txgh57hpi"]
+[gd_scene load_steps=4 format=3 uid="uid://d4i2txgh57hpi"]
 
 [ext_resource type="Texture2D" uid="uid://d21mg6gqsr86x" path="res://assets/example_background.png" id="1_snup7"]
 [ext_resource type="PackedScene" uid="uid://itrsf4gvrmj1" path="res://player.tscn" id="2_ll21n"]
+[ext_resource type="PackedScene" uid="uid://b08ykh1ovml8s" path="res://asteroid.tscn" id="3_rua5x"]
 
 [node name="Game" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_snup7")
-
 [node name="Player" parent="." instance=ExtResource("2_ll21n")]
 position = Vector2(0, 2500)
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(0, -2500)
+texture = ExtResource("1_snup7")
+
+[node name="Asteroid" parent="Player" instance=ExtResource("3_rua5x")]
+position = Vector2(-302, -199)
+
+[node name="Asteroid2" parent="Player" instance=ExtResource("3_rua5x")]
+position = Vector2(-221, -34)
+
+[node name="Asteroid3" parent="Player" instance=ExtResource("3_rua5x")]
+position = Vector2(3, -166)
+
+[node name="Asteroid4" parent="Player" instance=ExtResource("3_rua5x")]
+position = Vector2(90, -25)
+
+[node name="Asteroid5" parent="Player" instance=ExtResource("3_rua5x")]
+position = Vector2(225, -139)
