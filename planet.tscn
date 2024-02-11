@@ -1,0 +1,88 @@
+[gd_scene load_steps=13 format=3 uid="uid://ccs8u3gydpw88"]
+
+[ext_resource type="Script" path="res://src/planet.gd" id="1_0anhd"]
+[ext_resource type="Texture2D" uid="uid://b20uhl160ceeg" path="res://assets/planet.png" id="1_akyrr"]
+[ext_resource type="Texture2D" uid="uid://drd15jspi08yg" path="res://assets/ForceAnimation.png" id="3_sjyva"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eicmp"]
+radius = 134.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wxdtk"]
+radius = 304.081
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywnbu"]
+atlas = ExtResource("3_sjyva")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtaat"]
+atlas = ExtResource("3_sjyva")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lloa3"]
+atlas = ExtResource("3_sjyva")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7ysm"]
+atlas = ExtResource("3_sjyva")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2t3wa"]
+atlas = ExtResource("3_sjyva")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijtyp"]
+atlas = ExtResource("3_sjyva")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7nsas"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywnbu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtaat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lloa3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7ysm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2t3wa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijtyp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Planet" type="RigidBody2D"]
+mass = 10.0
+gravity_scale = 0.0
+script = ExtResource("1_0anhd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_akyrr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -5)
+shape = SubResource("CircleShape2D_eicmp")
+
+[node name="Gravity" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gravity"]
+shape = SubResource("CircleShape2D_wxdtk")
+debug_color = Color(0.8, 0.384314, 0.458824, 0.419608)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Gravity"]
+position = Vector2(43, 12)
+scale = Vector2(12, 12)
+sprite_frames = SubResource("SpriteFrames_7nsas")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Gravity" to="." method="_on_gravity_body_entered"]
+[connection signal="body_exited" from="Gravity" to="." method="_on_gravity_body_exited"]

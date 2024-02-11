@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=3 uid="uid://c5qnefu8t03ba"]
+
+[ext_resource type="Texture2D" uid="uid://476awkj2fi0q" path="res://assets/Asteroid 01 - Explode.png" id="1_ospef"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y55sa"]
+radius = 20.2485
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0dcs"]
+atlas = ExtResource("1_ospef")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whksk"]
+atlas = ExtResource("1_ospef")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qxve"]
+atlas = ExtResource("1_ospef")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54o5a"]
+atlas = ExtResource("1_ospef")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12jup"]
+atlas = ExtResource("1_ospef")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbkrc"]
+atlas = ExtResource("1_ospef")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pp3kw"]
+atlas = ExtResource("1_ospef")
+region = Rect2(576, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v7vmv"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0dcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whksk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qxve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54o5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12jup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbkrc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pp3kw")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="Asteroidv2" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_y55sa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_v7vmv")
+animation = &"new_animation"

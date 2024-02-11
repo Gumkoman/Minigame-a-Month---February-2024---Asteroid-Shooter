@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6sus3mowx1bo"]
+
+[ext_resource type="Texture2D" uid="uid://d21mg6gqsr86x" path="res://assets/example_background.png" id="1_dpi6c"]
+[ext_resource type="Script" path="res://src/TestLevel.gd" id="1_yynyk"]
+[ext_resource type="PackedScene" uid="uid://cd2t77cd25p28" path="res://asteroid.tscn" id="2_d5bn5"]
+[ext_resource type="PackedScene" uid="uid://ccs8u3gydpw88" path="res://planet.tscn" id="4_chikk"]
+
+[node name="Main" type="Node"]
+
+[node name="TestLevel" type="Node2D" parent="."]
+script = ExtResource("1_yynyk")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="TestLevel"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="TestLevel/ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="TestLevel/ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("1_dpi6c")
+
+[node name="Camera" type="Camera2D" parent="TestLevel"]
+position = Vector2(0, 2500)
+
+[node name="Asteroids" type="Node2D" parent="TestLevel"]
+
+[node name="Asteroid" parent="TestLevel/Asteroids" instance=ExtResource("2_d5bn5")]
+position = Vector2(-267, 2576)
+
+[node name="Asteroid5" parent="TestLevel/Asteroids" instance=ExtResource("2_d5bn5")]
+position = Vector2(28, 2689)
+
+[node name="Asteroid6" parent="TestLevel/Asteroids" instance=ExtResource("2_d5bn5")]
+position = Vector2(338, 2639)
+
+[node name="Asteroid7" parent="TestLevel/Asteroids" instance=ExtResource("2_d5bn5")]
+position = Vector2(331, 2530)
+
+[node name="Asteroid3" parent="TestLevel/Asteroids" instance=ExtResource("2_d5bn5")]
+position = Vector2(-378, 2664)
+
+[node name="Asteroid4" parent="TestLevel/Asteroids" instance=ExtResource("2_d5bn5")]
+position = Vector2(-116, 2559)
+
+[node name="Asteroid2" parent="TestLevel/Asteroids" instance=ExtResource("2_d5bn5")]
+position = Vector2(163, 2557)
+
+[node name="Planet" parent="TestLevel" instance=ExtResource("4_chikk")]
+position = Vector2(-202, 1515)
